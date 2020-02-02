@@ -12,7 +12,8 @@ namespace WorkloadTracker {
                                      "--help show this message and exit with code 0\n" +
                                      "-u <name> <days> Update how many days a person has work" +
                                      "-l List current data about workloads" +
-                                     "--check Report any persons that have less than 3 days of work";
+                                     "--check Report any persons that have less than 3 days of work +" +
+                                     "--remove <name> Remove <name> from the workloads data."; // todo
 
 
         private static string dataDir = Path.Combine(new [] {Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "workloadChecker"});
@@ -36,6 +37,7 @@ namespace WorkloadTracker {
                 workloads[args[1]] = DateTime.Today.AddDays(days);
                 var txt = JsonConvert.SerializeObject(workloads);
                 File.WriteAllText(dataPath,txt);
+                return 0;
             }
 
             if (args[0] == "--check") {
@@ -46,6 +48,8 @@ namespace WorkloadTracker {
                         Console.WriteLine($"{kvp.Key} only has {days} days left of Work!");
                     }
                 }
+
+                return 0;
             }
 
             if (args[0] == "-l") {
@@ -59,10 +63,14 @@ namespace WorkloadTracker {
                 foreach (var kvp in workloads) {
                     Console.WriteLine($"{kvp.Key} --- {kvp.Value.ToShortDateString()} --- work left: {kvp.Value.DaysUntil()}");
                 }
-                
+
+                return 0;
             }
             
-            return 0;
+            // todo option to remove an entry 
+            
+            Console.WriteLine(helpMessage);
+            return 1;
         }
 
         
