@@ -5,6 +5,7 @@
     <e p="C:\Users\G4G\.Rider2019.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\G4G\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_.19.00" t="ExcludeRecursive" />
     <e p="C:\Users\G4G\repos\WorkloadTracker" t="IncludeRecursive">
+      <e p=".gitignore" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
